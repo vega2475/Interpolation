@@ -10,4 +10,6 @@ module com.example.interpolation {
     opens com.example.interpolation.math to javafx.fxml;
     exports com.example.interpolation.controllers;
     opens com.example.interpolation.controllers to javafx.fxml;
+    exports com.example.interpolation.trash;
+    opens com.example.interpolation.trash to javafx.fxml;
 }

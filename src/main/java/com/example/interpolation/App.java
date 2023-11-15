@@ -33,12 +33,6 @@ public class App extends Application {
     private NumberAxis xAxis;
     private NumberAxis yAxis;
 
-
-
-    public void launchApp() {
-        launch();
-    }
-
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("График функции");
@@ -62,16 +56,6 @@ public class App extends Application {
         scatterChart.setOnMouseClicked(event -> {
             handleMouseClick(event, series, xValues, yValues);
         });
-
-
-        //Вычисления точек графика
-//        InterpolatingLagrangePolynomial polynomial = new InterpolatingLagrangePolynomial();
-//        for (double i = 0.0; i < 6; i += 0.01) {
-//            XYChart.Data<Number, Number> dataPoint = new XYChart.Data<>(i, polynomial.calculate(xValues, yValues, i));
-//            Circle circle = new Circle(1.0);
-//            dataPoint.setNode(circle);
-//            dataPoints.add(dataPoint);
-//        }
 
         // Добавление точек в график
         series.getData().addAll(dataPoints);
@@ -167,12 +151,10 @@ public class App extends Application {
 
     // Метод для пересчета и обновления графика
     private void recalculateAndRedrawGraph(XYChart.Series<Number, Number> series, List<Double> xValues, List<Double> yValues) {
-        // Очистите старые данные
         series.getData().clear();
 
-        // Повторно вычислите и добавьте данные
         InterpolatingLagrangePolynomial polynomial = new InterpolatingLagrangePolynomial();
-        for (double i = 0.0; i < 6; i += 0.01) {
+        for (double i = 0.0; i <= 10; i += 0.01) {
             XYChart.Data<Number, Number> dataPoint = new XYChart.Data<>(i, polynomial.calculate(xValues, yValues, i));
             Circle circle = new Circle(1.0);
             dataPoint.setNode(circle);
