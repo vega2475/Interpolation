@@ -59,7 +59,7 @@ public class App extends Application {
 
         // Добавление точек в график
         series.getData().addAll(dataPoints);
-        scatterChart.getData().add(series);
+        //scatterChart.getData().add(series);
 
         // Обработка событий масштабирования и перемещения
         scatterChart.setOnScroll(this::handleScroll);
